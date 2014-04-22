@@ -32,3 +32,5 @@ in this formate:
 @{@[Name, Email], Language}
 ```
 I implemented Xcodes dokumentation function to make it even easier to understand. Have fun and please make an issue if you miss a feature of find a bug. Have a nice day!
+
+You may enable "Localized resources can be mixed" in info.plist
