@@ -53,7 +53,7 @@ NSString *userToken;
     @try {
         contributorsDictionary = [NSMutableDictionary new];
         langDict = [NSMutableDictionary new];
-        NSURL *contUrl = [NSURL URLWithString:@"http://poeditor.com/api/"];
+        NSURL *contUrl = [NSURL URLWithString:@"https://poeditor.com/api/"];
         NSMutableURLRequest *contRequest = [NSMutableURLRequest requestWithURL:[contUrl standardizedURL]];
         [contRequest setHTTPMethod:@"POST"];
         NSString *postContData = [NSString stringWithFormat:@"api_token=%@&action=list_contributors&id=%@", authToken, projectID];
@@ -86,7 +86,7 @@ NSString *userToken;
             }
         }];
         NSMutableArray *languageArray = [NSMutableArray new];
-        NSURL *langUrl = [NSURL URLWithString:@"http://poeditor.com/api/"];
+        NSURL *langUrl = [NSURL URLWithString:@"https://poeditor.com/api/"];
         NSMutableURLRequest *langRequest = [NSMutableURLRequest requestWithURL:[langUrl standardizedURL]];
         [langRequest setHTTPMethod:@"POST"];
         NSString *postLangData = [NSString stringWithFormat:@"api_token=%@&action=list_languages&id=%@", authToken, projectID];
@@ -103,7 +103,7 @@ NSString *userToken;
                         [languageArray addObject:[listDictionary objectForKey:@"code"]];
                     }
                     if ([languageArray containsObject:[[NSLocale preferredLanguages] objectAtIndex:0]]) {
-                        NSURL *stringUrl = [NSURL URLWithString:@"http://poeditor.com/api/"];
+                        NSURL *stringUrl = [NSURL URLWithString:@"https://poeditor.com/api/"];
                         NSMutableURLRequest *stringRequest = [NSMutableURLRequest requestWithURL:[stringUrl standardizedURL]];
                         [stringRequest setHTTPMethod:@"POST"];
                         NSString *postStringData = [NSString stringWithFormat:@"api_token=%@&action=view_terms&id=%@&language=%@", authToken, projectID, [[NSLocale preferredLanguages] objectAtIndex:0]];
@@ -153,7 +153,7 @@ NSString *userToken;
 
 +(NSArray *)projects:(NSString *)token {
     NSMutableArray *returnArray = [NSMutableArray new];
-    NSURL *baseURL = [NSURL URLWithString:@"http://poeditor.com/api/"];
+    NSURL *baseURL = [NSURL URLWithString:@"https://poeditor.com/api/"];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[baseURL standardizedURL]];
     [request setHTTPMethod:@"POST"];
     NSString *data = [NSString stringWithFormat:@"api_token%@&action=list_projects", token];
@@ -182,7 +182,7 @@ NSString *userToken;
 +(NSArray *)languagesForProjectID:(NSString *)projectID andToken:(NSString *)token {
     NSAssert(projectID, @"You need to pass peojectID, you can find it here: https://poeditor.com/account/api");
     NSMutableArray *returnArray = [NSMutableArray new];
-    NSURL *baseURL = [NSURL URLWithString:@"http://poeditor.com/api/"];
+    NSURL *baseURL = [NSURL URLWithString:@"https://poeditor.com/api/"];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[baseURL standardizedURL]];
     [request setHTTPMethod:@"POST"];
     NSString *data = [NSString stringWithFormat:@"api_token=%@&action=list_languages&id=%@", token, projectID];
@@ -211,7 +211,7 @@ NSString *userToken;
     NSAssert(projectID, @"You need to pass peojectID, you can find it here: https://poeditor.com/account/api");
     NSAssert(langCode, @"You need to pass langCode");
     NSMutableArray *returnArray = [NSMutableArray new];
-    NSURL *baseURL = [NSURL URLWithString:@"http://poeditor.com/api/"];
+    NSURL *baseURL = [NSURL URLWithString:@"https://poeditor.com/api/"];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[baseURL standardizedURL]];
     [request setHTTPMethod:@"POST"];
     NSString *data = [NSString stringWithFormat:@"api_token=%@&action=view_terms&id=%@&language=%@", token, projectID, langCode];
@@ -241,7 +241,7 @@ NSString *userToken;
     NSAssert(nativeTerm, @"You need to pass nativeTerm, the  translated term");
     NSAssert(projectID, @"You need to pass peojectID, you can find it here: https://poeditor.com/account/api");
     NSAssert(langCode, @"You need to pass langCode of the translated term (nativeTerm)");
-    NSURL *baseURL = [NSURL URLWithString:@"http://poeditor.com/api/"];
+    NSURL *baseURL = [NSURL URLWithString:@"https://poeditor.com/api/"];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[baseURL standardizedURL]];
     [request setHTTPMethod:@"POST"];
     NSString *jsonString = [NSString stringWithFormat:@"[{\"term\":{\"term\":\"%@\",\"context\":\"\"},\"definition\":{\"forms\":[\"%@\"],\"fuzzy\":\"0\"}}]", term, nativeTerm];
